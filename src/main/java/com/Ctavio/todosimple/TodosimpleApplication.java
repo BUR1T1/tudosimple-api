@@ -8,7 +8,7 @@ public class TodosimpleApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TodosimpleApplication.class, args);
-		System.out.println("hellow worl");
+		
 	}
 
 }
