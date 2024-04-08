@@ -1,5 +1,8 @@
 package com.Ctavio.todosimple.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -8,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -39,7 +43,8 @@ public class User {
     @Size(groups = {CreatUser.class, UpdateUser.class } ,min = 8, max = 60)
     private String password;
 
-    //private List<task> task - new ArrayList<task>();
+    @OneToMany(mappedBy = "user")
+    private List<Task> Task = new ArrayList<Task>();
 
     public User(){
 
@@ -81,6 +86,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Task> getTasks() {
+        return Task;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.Task = tasks;
     }
 
     @Override
