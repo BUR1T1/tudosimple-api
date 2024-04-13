@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.Ctavio.todosimple.models.User;
 import com.Ctavio.todosimple.reposritories.TaskRepository;
+import com.Ctavio.todosimple.reposritories.UserRepository;
 
+import org.springframework.stereotype.Repository;
 import jakarta.transaction.Transactional;
 
 @Service
