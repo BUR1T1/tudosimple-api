@@ -134,5 +134,10 @@ public class User {
             return false;
         return true;
     }
+
+    public String getDescription() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDescription'");
+    }
     
 }

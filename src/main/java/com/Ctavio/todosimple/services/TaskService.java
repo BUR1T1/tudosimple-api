@@ -1,5 +1,6 @@
 package com.Ctavio.todosimple.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import com.Ctavio.todosimple.models.User;
 import com.Ctavio.todosimple.reposritories.TaskRepository;
 
 import jakarta.transaction.Transactional;
-
+import jakarta.validation.Valid;
 @Service
 public class TaskService {
 
@@ -25,6 +26,12 @@ public class TaskService {
         Optional<Task> task = this.taskRepository.findById(id);
         return task.orElseThrow(() -> new RuntimeException("Tarefa não encontrada!!! id:" + id + Task.class.getName()));
     }
+
+    public List<Task> findAllByUserId(long userId){
+
+    List<Task> tasks = this.taskRepository.findByUser_Id(userId);
+    return tasks;
+    }
 @Transactional
     public Task create(Task obj){
 
@@ -38,7 +45,7 @@ public class TaskService {
     }
 
     @Transactional
-    public Task update(Task obj){
+    public Task update(@Valid User obj){
         Task newObj = findById(obj.getId());
         newObj.setDescription(obj.getDescription());
         return this.taskRepository.save(newObj);
